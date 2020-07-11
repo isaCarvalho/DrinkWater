@@ -71,7 +71,10 @@ class MainActivity : AppCompatActivity(),
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         drawerLayout.closeDrawer(GravityCompat.START)
         return when (item.itemId) {
-            R.id.aboutMenuItem -> true
+            R.id.aboutMenuItem -> {
+                AboutActivity.start(this)
+                true
+            }
 
             R.id.notificationMenuItem -> true
 
