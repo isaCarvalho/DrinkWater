@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import com.example.drinkwater.util.WaterHelper
 import com.example.drinkwater.viewModel.WaterViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -23,10 +25,18 @@ class SettingsActivity : AppCompatActivity() {
 
         val saveBtn = findViewById<Button>(R.id.saveBtn)
         saveBtn.setOnClickListener {
-            val value = findViewById<EditText>(R.id.waterAmountEdit).text.toString().toFloat()
-            WaterHelper.setTotalWater(value)
+            val value = findViewById<EditText>(R.id.waterAmountEdit).text.toString()
 
-            finish()
+            if (!value.isNullOrEmpty())
+            {
+                WaterHelper.setTotalWater(value.toFloat())
+                finish()
+            }
+            else {
+                Snackbar.make(saveBtn, "You must insert a valid amount" , Snackbar.LENGTH_SHORT)
+                    .setAction("Action", null)
+                    .show()
+            }
         }
     }
 
