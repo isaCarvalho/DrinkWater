@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">DrinkWater</string>
+    <string name="name">Name</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="image_logo">Image Logo</string>
+    <string name="save">Save</string>
+    <string name="example_string">0%</string>
+    <string name="drink_water">Drink Water (100 ml)</string>
+    <string name="water_amout">Water amout per day (L)</string>
+    <string name="about">About</string>
+    <string name="settings">Settings</string>
+    <string name="notification">Notification</string>
+    <string name="home">Home</string>
+    <string name="open_nav_drawer">Open navigation drawer</string>
+    <string name="close_nav_drawer">Close navigation drawer</string>
+    <string name="water_drank">Water drank</string>
+</resources>
