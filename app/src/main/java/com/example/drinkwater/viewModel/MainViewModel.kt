@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.drinkwater.util.WaterHelper
 
-class WaterViewModel(app: Application) : AndroidViewModel(app)
+class MainViewModel(app: Application) : AndroidViewModel(app)
 {
     var percent = MutableLiveData<Float>() // percent of water
 
