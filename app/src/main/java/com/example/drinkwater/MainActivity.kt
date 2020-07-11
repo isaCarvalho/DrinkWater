@@ -1,6 +1,7 @@
 package com.example.drinkwater
 
 import android.annotation.SuppressLint
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -12,6 +13,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.example.drinkwater.notification.NotificationService
 import com.example.drinkwater.util.WaterHelper
 import com.example.drinkwater.viewModel.WaterViewModel
 import com.google.android.material.navigation.NavigationView
