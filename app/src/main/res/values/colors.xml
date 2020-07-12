@@ -7,5 +7,6 @@
 <!--    <color name="colorBackground">#0B2239</color>-->
     <color name="colorBackground">#FFFFFF</color>
     <color name="colorText">#0B2239</color>
+    <color name="colorTextLight">#1f364d</color>
     <color name="colorButton">#00A6C8</color>
 </resources>
