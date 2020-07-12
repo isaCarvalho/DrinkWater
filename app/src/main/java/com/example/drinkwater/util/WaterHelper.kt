@@ -1,39 +1,33 @@
 package com.example.drinkwater.util
 
+import android.content.Context
+import com.example.drinkwater.model.Diary
+
 class WaterHelper
 {
     companion object
     {
-        private var totalWater = 0F // total of water in L that a person will drink
-        private var totalWaterML = 0F // total of water in ML that a person will drink
-        private var qtWater = 0F // quantity of water in ML that the person already drunk
+        private var diary = Diary()
 
-        fun setTotalWater(qt : Float)
+        fun setTotalWater(context : Context, qt : Float)
         {
-            totalWater = qt
-            totalWaterML = qt * 1000
+            diary.setTotalWater(qt, context)
         }
 
-        fun getTotalWater() = totalWater
+        fun getTotalWater(context: Context) = diary.getTotalWater(context)
 
-        fun calculatePercent() : Float {
-            return if (totalWaterML != 0F)
-                qtWater * 100 / totalWaterML
-            else
-                0F
+        fun calculatePercent(context : Context) : Float {
+            return diary.calculatePercent(context)
         }
 
-        fun clearValues()
+        fun clearValues(context : Context)
         {
-            qtWater = 0F
-            totalWater = 0F
-            totalWaterML = 0F
+            diary.clearValues(context)
         }
 
-        fun incrementWater()
+        fun incrementWater(context : Context)
         {
-            if (qtWater <= totalWaterML)
-                qtWater += 100
+            diary.incrementWater(context)
         }
     }
 }

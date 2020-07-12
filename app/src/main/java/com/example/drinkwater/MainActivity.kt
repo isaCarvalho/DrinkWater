@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(),
             percentText.text = "$it%"
         })
 
-        if (WaterHelper.getTotalWater() == 0F) {
+        if (WaterHelper.getTotalWater(this) == 0F) {
             SettingsActivity.start(this)
         }
 

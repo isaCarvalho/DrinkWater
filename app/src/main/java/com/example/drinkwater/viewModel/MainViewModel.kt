@@ -19,17 +19,17 @@ class MainViewModel(app: Application) : AndroidViewModel(app)
     fun clearValues()
     {
         percent.value = 0F
-        waterHelper.clearValues()
+        waterHelper.clearValues(context)
     }
 
     fun incrementWater()
     {
-        waterHelper.incrementWater()
+        waterHelper.incrementWater(context)
         publishPercent()
     }
 
     private fun publishPercent()
     {
-        percent.value = waterHelper.calculatePercent()
+        percent.value = waterHelper.calculatePercent(context)
     }
 }

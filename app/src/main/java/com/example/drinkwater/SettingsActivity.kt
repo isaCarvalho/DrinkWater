@@ -21,7 +21,7 @@ class SettingsActivity : AppCompatActivity() {
 
             if (value.isNotEmpty())
             {
-                WaterHelper.setTotalWater(value.toFloat())
+                WaterHelper.setTotalWater(this, value.toFloat())
                 finish()
             }
             else {
