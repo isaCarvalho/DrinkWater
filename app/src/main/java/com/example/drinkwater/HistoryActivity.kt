@@ -13,7 +13,7 @@ import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import com.example.drinkwater.util.WaterHelper
+import com.example.drinkwater.util.DiaryHelper
 
 class HistoryActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
@@ -39,7 +39,7 @@ class HistoryActivity : AppCompatActivity() {
 
 
         // creating the table data
-        val list = WaterHelper.getAll(this)
+        val list = DiaryHelper.getAll(this)
         list?.forEach { item ->
 
             textsContent = ArrayList()
@@ -66,7 +66,7 @@ class HistoryActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return if (item.itemId == R.id.clearHistoryItem) {
-            WaterHelper.deleteAll(this)
+            DiaryHelper.deleteAll(this)
             finish()
             true
         }

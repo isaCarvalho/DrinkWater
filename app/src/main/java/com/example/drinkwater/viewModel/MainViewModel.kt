@@ -5,7 +5,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.example.drinkwater.util.WaterHelper
+import com.example.drinkwater.util.DiaryHelper
 
 @RequiresApi(Build.VERSION_CODES.O)
 class MainViewModel(app: Application) : AndroidViewModel(app)
@@ -13,7 +13,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app)
     var percent = MutableLiveData<Float>() // percent of water
 
     private val context = app
-    private val waterHelper = WaterHelper
+    private val waterHelper = DiaryHelper
 
     init {
         percent.value = waterHelper.getPercent(context)

@@ -14,7 +14,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.example.drinkwater.util.WaterHelper
+import com.example.drinkwater.util.DiaryHelper
 import com.example.drinkwater.viewModel.MainViewModel
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity(),
             percentText.text = "$it%"
         })
 
-        if (WaterHelper.getTotalWater(this) == 0F) {
+        if (DiaryHelper.getTotalWater(this) == 0F) {
             SettingsActivity.start(this)
         }
 

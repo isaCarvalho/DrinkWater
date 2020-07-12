@@ -5,7 +5,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import com.example.drinkwater.model.Diary
 
-class WaterHelper
+class DiaryHelper
 {
     companion object
     {

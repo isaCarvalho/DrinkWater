@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.annotation.RequiresApi
-import com.example.drinkwater.util.WaterHelper
+import com.example.drinkwater.util.DiaryHelper
 import com.google.android.material.snackbar.Snackbar
 
 class SettingsActivity : AppCompatActivity() {
@@ -24,7 +24,7 @@ class SettingsActivity : AppCompatActivity() {
 
             if (value.isNotEmpty())
             {
-                WaterHelper.setTotalWater(this, value.toFloat())
+                DiaryHelper.setTotalWater(this, value.toFloat())
                 finish()
             }
             else {
