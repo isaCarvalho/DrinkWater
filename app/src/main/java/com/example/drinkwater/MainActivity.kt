@@ -1,11 +1,13 @@
 package com.example.drinkwater
 
 import android.annotation.SuppressLint
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -26,6 +28,7 @@ class MainActivity : AppCompatActivity(),
         findViewById<DrawerLayout>(R.id.drawer_layout)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,6 +71,7 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         drawerLayout.closeDrawer(GravityCompat.START)
         return when (item.itemId) {
@@ -77,6 +81,11 @@ class MainActivity : AppCompatActivity(),
             }
 
             R.id.notificationMenuItem -> true
+
+            R.id.historyMenuItem -> {
+                HistoryActivity.start(this)
+                true
+            }
 
             R.id.homeMenuItem -> {
                 viewModel.clearValues()

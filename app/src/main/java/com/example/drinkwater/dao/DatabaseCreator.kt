@@ -14,18 +14,17 @@ class DatabaseCreator(context: Context) : SQLiteOpenHelper(
 ){
     override fun onCreate(db: SQLiteDatabase?) {
         val sql = "CREATE TABLE $TABLE_NAME (" +
-                "${BaseColumns._ID} INTEGER PRIMARY KEY NOT NULL, " +
                 "$TOTAL_WATER FLOAT NOT NULL, " +
                 "$TOTAL_WATER_ML FLOAT NOT NULL, " +
                 "$QT_WATER FLOAT NOT NULL, " +
                 "$PERCENT FLOAT NOT NULL, " +
-                "$DATE TEXT NOT NULL )"
+                "$DATE TEXT NOT NULL PRIMARY KEY )"
 
         db?.execSQL(sql)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        var sql = "DROP TABLE IF EXISTS $TABLE_NAME"
+        val sql = "DROP TABLE IF EXISTS $TABLE_NAME"
 
         db?.execSQL(sql)
         onCreate(db)

@@ -24,4 +24,10 @@
         the counting. If you do not want notifications, then you can go on the \"Notifications\"
         item in the nav and stop it. Please, feel welcome to use this app in you daily life!
     </string>
+    <string name="history">History</string>
+    <string name="total_water">Total Water(L)</string>
+    <string name="total_water_ml">Total Water(ml)</string>
+    <string name="percent">Percent(%)</string>
+    <string name="quantity">Quantity(ml)</string>
+    <string name="date">Date</string>
 </resources>

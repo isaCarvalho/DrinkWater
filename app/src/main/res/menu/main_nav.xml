@@ -9,6 +9,12 @@
         android:id="@+id/notificationMenuItem"
         android:icon="@mipmap/ic_notification_foreground"
         android:title="@string/notification" />
+
+    <item
+        android:id="@+id/historyMenuItem"
+        android:icon="@mipmap/ic_history_foreground"
+        android:title="@string/history"/>
+
     <item
         android:id="@+id/homeMenuItem"
         android:icon="@mipmap/ic_home_foreground"
