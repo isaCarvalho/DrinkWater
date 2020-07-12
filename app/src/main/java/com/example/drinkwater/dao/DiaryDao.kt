@@ -8,7 +8,7 @@ import com.example.drinkwater.model.Diary
 import com.example.drinkwater.util.*
 import kotlin.collections.ArrayList
 
-class DiaryDao(private val context: Context)
+class DiaryDao(context: Context)
 {
     private val dbHelper = DatabaseCreator(context)
 

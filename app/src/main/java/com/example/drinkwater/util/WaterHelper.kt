@@ -43,5 +43,8 @@ class WaterHelper
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun getPercent(context: Context) = diary.getPercent(context)
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun deleteAll(context: Context) = diary.deleteAll(context)
     }
 }

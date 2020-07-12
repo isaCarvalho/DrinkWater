@@ -3,7 +3,6 @@ package com.example.drinkwater.dao
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.provider.BaseColumns
 import com.example.drinkwater.util.*
 
 class DatabaseCreator(context: Context) : SQLiteOpenHelper(

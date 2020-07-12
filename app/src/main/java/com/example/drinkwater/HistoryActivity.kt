@@ -7,6 +7,8 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
@@ -55,6 +57,23 @@ class HistoryActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.history_menu, menu)
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return if (item.itemId == R.id.clearHistoryItem) {
+            WaterHelper.deleteAll(this)
+            finish()
+            true
+        }
+        else
+            true
+    }
+
     private fun makeRow(textsContent : ArrayList<String>, index : Int = 0) : TableRow
     {
         val lp = TableRow.LayoutParams(
@@ -91,6 +110,7 @@ class HistoryActivity : AppCompatActivity() {
             setTextColor(resources.getColor(R.color.colorBackground))
             gravity = Gravity.CENTER_HORIZONTAL
             setPadding(4,4,4,4)
+            textSize = 15F
         }
     }
 

@@ -30,4 +30,5 @@
     <string name="percent">Percent(%)</string>
     <string name="quantity">Quantity(ml)</string>
     <string name="date">Date</string>
+    <string name="clear_history">Clear History</string>
 </resources>

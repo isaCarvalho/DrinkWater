@@ -103,4 +103,9 @@ data class Diary(
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun getAll(context: Context) = DiaryDao(context).getAll()
+
+    fun deleteAll(context: Context)
+    {
+        DiaryDao(context).deleteAll()
+    }
 }
