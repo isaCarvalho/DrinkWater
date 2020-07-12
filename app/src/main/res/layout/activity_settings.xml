@@ -42,8 +42,8 @@
             android:ems="10"
             android:hint="@string/water_amout"
             android:inputType="numberDecimal"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorText"
             android:layout_marginTop="@dimen/header_padding"/>
 
         <Button

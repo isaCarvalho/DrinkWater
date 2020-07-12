@@ -8,7 +8,7 @@
     <item
         android:id="@+id/notificationMenuItem"
         android:icon="@mipmap/ic_notification_foreground"
-        android:title="@string/notification" />
+        android:title="@string/notification"/>
     <item
         android:id="@+id/homeMenuItem"
         android:icon="@mipmap/ic_home_foreground"
