@@ -80,7 +80,10 @@ class MainActivity : AppCompatActivity(),
                 true
             }
 
-            R.id.notificationMenuItem -> true
+            R.id.notificationMenuItem -> {
+                NotificationActivity.start(this)
+                true
+            }
 
             R.id.historyMenuItem -> {
                 HistoryActivity.start(this)

@@ -21,6 +21,7 @@
             app:titleTextColor="@android:color/white">
 
         </androidx.appcompat.widget.Toolbar>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -69,6 +70,7 @@
             </LinearLayout>
 
         </ScrollView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

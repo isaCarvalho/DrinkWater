@@ -31,4 +31,14 @@
     <string name="quantity">Quantity(ml)</string>
     <string name="date">Date</string>
     <string name="clear_history">Clear History</string>
+    <string name="initial_hour">Initial Hour</string>
+    <string name="_8">8</string>
+    <string name="final_hour">Final Hour</string>
+    <string name="_24">24</string>
+    <string name="update_interval">Update Interval</string>
+    <string name="notificationText">
+        Hello! Feel free to set up the interval you want for us to remind you to drink water.
+        Remember to just put the number of the hour, like 8 for 8 AM and 24 for midnight.
+        Enjoy!
+    </string>
 </resources>

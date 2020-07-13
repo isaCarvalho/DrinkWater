@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".NotificationActivity"
+    android:background="@color/colorBackground">
+
+    <ImageView
+        android:id="@+id/imgLogoNotifications"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        app:srcCompat="@mipmap/ic_launcher_foreground"
+        tools:ignore="VectorDrawableCompat" />
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/initialHourTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/initial_hour"
+            android:textColor="@android:color/black"
+            android:layout_margin="4dp"
+            android:textSize="16sp"/>
+
+        <EditText
+            android:id="@+id/initialHourEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:hint="@string/_8"
+            android:autofillHints="@string/_8"
+            android:layout_margin="4dp"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/finalHourTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/final_hour"
+            android:textColor="@android:color/black"
+            android:layout_margin="4dp"
+            android:textSize="16sp"/>
+
+        <EditText
+            android:id="@+id/finalHourEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:hint="@string/_24"
+            android:autofillHints="@string/_24"
+            android:layout_margin="4dp"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="16dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/update_interval"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="8dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:background="@color/colorText"
+            android:textColor="@color/colorBackground"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:id="@+id/intervalBtn"
+            style="@style/Widget.AppCompat.Button.Borderless"/>
+
+        <Button
+            android:id="@+id/notificationBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/notification"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="8dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:background="@color/colorText"
+            android:textColor="@color/colorBackground"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            style="@style/Widget.AppCompat.Button.Borderless"/>
+    </TableRow>
+
+    <ImageView
+        android:id="@+id/imgDivider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:adjustViewBounds="false"
+        android:background="#606060"
+        android:contentDescription="@string/app_name"
+        app:srcCompat="@android:drawable/divider_horizontal_textfield" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/notificationText"
+            android:fontFamily="@font/amita"
+            android:textColor="@color/colorText"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="16dp"
+            android:textAlignment="center"/>
+</LinearLayout>

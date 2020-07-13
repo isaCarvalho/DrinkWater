@@ -24,7 +24,7 @@ class DiaryDao(context: Context)
             put(DATE, diary.getDate())
         }
 
-        db?.insert(TABLE_NAME, null, contentValues)
+        db?.insert(DIARY_TABLE, null, contentValues)
     }
 
     fun update(diary: Diary)
@@ -38,12 +38,12 @@ class DiaryDao(context: Context)
             put(PERCENT, diary.getPercent())
         }
 
-        db?.update(TABLE_NAME, contentValues, "$DATE = ?", arrayOf(diary.getDate()))
+        db?.update(DIARY_TABLE, contentValues, "$DATE = ?", arrayOf(diary.getDate()))
     }
 
     fun deleteAll()
     {
-        dbHelper.writableDatabase.execSQL("DELETE FROM $TABLE_NAME")
+        dbHelper.writableDatabase.execSQL("DELETE FROM $DIARY_TABLE")
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -53,7 +53,7 @@ class DiaryDao(context: Context)
 
         val projection = arrayOf(TOTAL_WATER, TOTAL_WATER_ML, QT_WATER, PERCENT, DATE)
 
-        val cursor = db?.query(TABLE_NAME, projection, "$DATE = ?", arrayOf(date),
+        val cursor = db?.query(DIARY_TABLE, projection, "$DATE = ?", arrayOf(date),
             null, null, null )
 
         var diary : Diary? = null
@@ -81,7 +81,7 @@ class DiaryDao(context: Context)
 
         val projection = arrayOf(TOTAL_WATER, TOTAL_WATER_ML, QT_WATER, PERCENT, DATE)
 
-        val cursor = db?.query(TABLE_NAME, projection, null, null,
+        val cursor = db?.query(DIARY_TABLE, projection, null, null,
             null, null, null )
 
         val diary = ArrayList<Diary>()
