@@ -15,7 +15,6 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.example.drinkwater.util.DiaryHelper
 import com.example.drinkwater.viewModel.MainViewModel
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -60,7 +59,7 @@ class MainActivity : AppCompatActivity(),
         })
 
         // settings activity
-        if (DiaryHelper.getTotalWater(this) == 0F) {
+        if (viewModel.getTotalWater() == 0F) {
             SettingsActivity.start(this)
         }
 

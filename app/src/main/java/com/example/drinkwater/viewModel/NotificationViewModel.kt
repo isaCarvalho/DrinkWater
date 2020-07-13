@@ -7,7 +7,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.drinkwater.util.DiaryHelper
 import com.example.drinkwater.util.JobHelper
-import kotlinx.coroutines.Job
 
 class NotificationViewModel(app : Application) : AndroidViewModel(app)
 {

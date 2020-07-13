@@ -11,12 +11,14 @@ import com.example.drinkwater.util.DiaryHelper
 class MainViewModel(app: Application) : AndroidViewModel(app)
 {
     var percent = MutableLiveData<Float>() // percent of water
+    var totalWater = MutableLiveData<Float>()
 
     private val context = app
     private val waterHelper = DiaryHelper
 
     init {
         percent.value = waterHelper.getPercent(context)
+        totalWater.value = waterHelper.getTotalWater(context)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -24,6 +26,12 @@ class MainViewModel(app: Application) : AndroidViewModel(app)
     {
         percent.value = 0F
         waterHelper.clearValues(context)
+    }
+
+    fun getTotalWater() : Float
+    {
+        totalWater.value = waterHelper.getTotalWater(context)
+        return totalWater.value!!
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

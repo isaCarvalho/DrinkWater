@@ -7,6 +7,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.os.Build.VERSION_CODES.O
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -14,20 +15,18 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.drinkwater.job.DiaryJobService
 import com.example.drinkwater.util.*
 import com.example.drinkwater.viewModel.NotificationViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_notification.*
-import kotlinx.coroutines.Job
 
 class NotificationActivity : AppCompatActivity()
 {
     private lateinit var viewModel : NotificationViewModel
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    @RequiresApi(O)
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +41,10 @@ class NotificationActivity : AppCompatActivity()
             else
                 notificationBtn.text = "Start Notification"
         })
+
+        // Interval
+        val interval = viewModel.calculatePeriod(false) * 60
+        intervalTxt.text = "Notification Interval: $interval min"
 
         // buttons
         notificationBtn.setOnClickListener {
@@ -58,38 +61,24 @@ class NotificationActivity : AppCompatActivity()
         intervalBtn.setOnClickListener {
             val initialHourString = findViewById<EditText>(R.id.initialHourEdit).text.toString()
             val finalHourString = findViewById<EditText>(R.id.finalHourEdit).text.toString()
-            var defaultValues = false
 
-            if (initialHourString.isEmpty()) {
-                defaultValues = true
-            }
-            else
-                viewModel.initialHour.value = initialHourString.toInt()
-
-            if (finalHourString.isEmpty()) {
-                defaultValues = true
-            }
-            else
-                viewModel.finalHour.value = initialHourString.toInt()
-
-            if (defaultValues)
-                Snackbar.make(intervalBtn, "Default values used" , Snackbar.LENGTH_SHORT)
+            if (initialHourString.isEmpty() || finalHourString.isEmpty()) {
+                Snackbar.make(intervalBtn, "Please, enter valid values!", Snackbar.LENGTH_SHORT)
                     .setAction("Action", null)
                     .show()
+
+                return@setOnClickListener
+            }
 
             viewModel.updateInterval()
             Toast.makeText(this, "Interval updated", Toast.LENGTH_SHORT)
                 .show()
-
-            finish()
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun scheduleJob()
     {
-        Log.i(INFO_TAG, "metodo scheduleJob")
-
         var period = 0F
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
