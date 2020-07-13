@@ -11,10 +11,14 @@ class JobHelper
     companion object
     {
         private val notification = Notification()
+        var initialHour = 8
+        var finalHour = 24
 
-        fun getInitialHour(context: Context) = notification.getNotificationSettings(context).initialHour
-
-        fun getFinalHour(context: Context) = notification.getNotificationSettings(context).finalHour
+        fun updateHours(context: Context)
+        {
+            initialHour = notification.getNotificationSettings(context).initialHour
+            finalHour = notification.getNotificationSettings(context).finalHour
+        }
 
         fun getNotificationStatus(context: Context) = notification.getNotificationSettings(context).isNotificationOn
 

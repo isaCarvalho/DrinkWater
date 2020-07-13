@@ -38,7 +38,9 @@
             android:inputType="number"
             android:hint="@string/_8"
             android:autofillHints="@string/_8"
-            android:layout_margin="4dp"/>
+            android:layout_margin="4dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/secondary_text_dark"/>
     </TableRow>
 
     <TableRow
@@ -63,7 +65,9 @@
             android:inputType="number"
             android:hint="@string/_24"
             android:autofillHints="@string/_24"
-            android:layout_margin="4dp"/>
+            android:layout_margin="4dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/secondary_text_dark"/>
     </TableRow>
 
     <TableRow

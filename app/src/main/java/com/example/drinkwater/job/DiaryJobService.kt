@@ -38,9 +38,9 @@ class DiaryJobService : JobService()
             if (DiaryHelper.isGoalAccomplished(applicationContext))
                 return@Runnable
 
-            if (JobHelper.isIntervalValid(JobHelper.getInitialHour(applicationContext), JobHelper.getFinalHour(applicationContext)))
+            if (JobHelper.isIntervalValid(JobHelper.initialHour, JobHelper.finalHour))
             {
-                if (JobHelper.verifyInterval(JobHelper.getInitialHour(applicationContext), JobHelper.getFinalHour(applicationContext)))
+                if (JobHelper.verifyInterval(JobHelper.initialHour, JobHelper.finalHour))
                 {
                     NotificationService.getInstance(applicationContext)
                         .pushNotification(

@@ -17,12 +17,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.drinkwater.job.DiaryJobService
-import com.example.drinkwater.util.DiaryHelper
-import com.example.drinkwater.util.JOB_ID
-import com.example.drinkwater.util.JOB_TAG
-import com.example.drinkwater.util.JobHelper
+import com.example.drinkwater.util.*
 import com.example.drinkwater.viewModel.NotificationViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_notification.*
+import kotlinx.coroutines.Job
 
 class NotificationActivity : AppCompatActivity()
 {
@@ -46,6 +45,8 @@ class NotificationActivity : AppCompatActivity()
 
         // buttons
         notificationBtn.setOnClickListener {
+            viewModel.updateHours()
+
             if (viewModel.isNotificationOn.value == "y")
                 cancelJob()
             else
@@ -55,23 +56,50 @@ class NotificationActivity : AppCompatActivity()
         }
 
         intervalBtn.setOnClickListener {
-            val initialHour = findViewById<EditText>(R.id.initialHourEdit).text.toString().toInt()
-            val finalHour = findViewById<EditText>(R.id.finalHourEdit).text.toString().toInt()
+            val initialHourString = findViewById<EditText>(R.id.initialHourEdit).text.toString()
+            val finalHourString = findViewById<EditText>(R.id.finalHourEdit).text.toString()
+            var defaultValues = false
 
-            JobHelper.updateInterval(this, initialHour, finalHour)
+            if (initialHourString.isEmpty()) {
+                defaultValues = true
+            }
+            else
+                viewModel.initialHour.value = initialHourString.toInt()
+
+            if (finalHourString.isEmpty()) {
+                defaultValues = true
+            }
+            else
+                viewModel.finalHour.value = initialHourString.toInt()
+
+            if (defaultValues)
+                Snackbar.make(intervalBtn, "Default values used" , Snackbar.LENGTH_SHORT)
+                    .setAction("Action", null)
+                    .show()
+
+            viewModel.updateInterval()
+            Toast.makeText(this, "Interval updated", Toast.LENGTH_SHORT)
+                .show()
+
+            finish()
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun scheduleJob()
     {
-        val period = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            JobHelper.calculatePeriod(this, DiaryHelper.getTotalWaterML(this))
+        Log.i(INFO_TAG, "metodo scheduleJob")
+
+        var period = 0F
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            period = viewModel.calculatePeriod()
         } else {
-            JobHelper.calculatePeriod(this, 2000F)
+            finish()
         }
 
         val componentName = ComponentName(this, DiaryJobService::class.java)
+
         val info = JobInfo.Builder(JOB_ID, componentName)
             .setRequiresCharging(false)
             .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
