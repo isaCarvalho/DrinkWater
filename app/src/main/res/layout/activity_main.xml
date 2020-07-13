@@ -31,13 +31,25 @@
         tools:context=".SettingsActivity"
         android:layout_gravity="center">
 
+        <TextView
+            android:id="@+id/congratulationsTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amita"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textStyle="bold"
+            android:textColor="@color/colorCongratulations"/>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/congratulationsTxt">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,19 +65,19 @@
                     android:id="@+id/percentText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="82sp"
-                    android:textColor="@color/colorText"
-                    android:text="@string/example_string"
+                    android:layout_marginBottom="8dp"
                     android:gravity="center_horizontal"
-                    android:layout_marginBottom="8dp"/>
+                    android:text="@string/example_string"
+                    android:textColor="@color/colorText"
+                    android:textSize="82sp" />
 
                 <Button
                     android:id="@+id/drinkWaterBtn"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorButton"
                     android:layout_gravity="center_horizontal"
-                    android:text="@string/drink_water"/>
+                    android:background="@color/colorButton"
+                    android:text="@string/drink_water" />
 
             </LinearLayout>
 

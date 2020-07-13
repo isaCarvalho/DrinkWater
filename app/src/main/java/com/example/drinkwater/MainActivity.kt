@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
@@ -18,11 +19,13 @@ import com.example.drinkwater.util.DiaryHelper
 import com.example.drinkwater.viewModel.MainViewModel
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 class MainActivity : AppCompatActivity(),
     NavigationView.OnNavigationItemSelectedListener
 {
     private lateinit var viewModel: MainViewModel
+    private lateinit var tts: TextToSpeech
 
     private val drawerLayout by lazy {
         findViewById<DrawerLayout>(R.id.drawer_layout)
@@ -34,13 +37,29 @@ class MainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_nav)
 
+        // text to speech
+        tts = TextToSpeech(applicationContext,
+            TextToSpeech.OnInitListener { status ->
+                if (status != TextToSpeech.ERROR)
+                    tts.language = Locale.UK
+            })
+
         // view model
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
         viewModel.percent.observe(this, Observer {
             percentText.text = "$it%"
+
+            if (it >= 100F)
+            {
+                congratulationsTxt.text = "Congratulations!"
+                tts.speak("Congratulations!", TextToSpeech.QUEUE_FLUSH, null)
+            }
+            else
+                congratulationsTxt.text = null
         })
 
+        // settings activity
         if (DiaryHelper.getTotalWater(this) == 0F) {
             SettingsActivity.start(this)
         }
