@@ -87,13 +87,16 @@ class NotificationActivity : AppCompatActivity()
             finish()
         }
 
+        Log.i(INFO_TAG, "period $period h")
+        Log.i(INFO_TAG, "period ${convertToMilliseconds(period).toLong()} ms")
+
         val componentName = ComponentName(this, DiaryJobService::class.java)
 
         val info = JobInfo.Builder(JOB_ID, componentName)
             .setRequiresCharging(false)
             .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
             .setPersisted(true)
-            .setPeriodic(period.toLong())
+            .setPeriodic(convertToMilliseconds(period).toLong())
             .build()
 
         val scheduler = getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
@@ -106,6 +109,9 @@ class NotificationActivity : AppCompatActivity()
         else
             Toast.makeText(this, "Notification failed to schedule", Toast.LENGTH_SHORT).show()
     }
+
+    // change hours to milliseconds
+    private fun convertToMilliseconds(number : Float) = number * 60 * 60
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun cancelJob()

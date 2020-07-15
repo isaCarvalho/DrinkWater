@@ -35,13 +35,13 @@ class DiaryJobService : JobService()
             if (jobCancelled)
                 return@Runnable
 
-            if (DiaryHelper.isGoalAccomplished(applicationContext))
-                return@Runnable
-
-            if (JobHelper.isIntervalValid(JobHelper.initialHour, JobHelper.finalHour))
-            {
-                if (JobHelper.verifyInterval(JobHelper.initialHour, JobHelper.finalHour))
-                {
+//            if (DiaryHelper.isGoalAccomplished(applicationContext))
+//                return@Runnable
+//
+//            if (JobHelper.isIntervalValid(JobHelper.initialHour, JobHelper.finalHour))
+//            {
+//                if (JobHelper.verifyInterval(JobHelper.initialHour, JobHelper.finalHour))
+//                {
                     NotificationService.getInstance(applicationContext)
                         .pushNotification(
                             "You have to drink 100 ml of water now",
@@ -50,8 +50,8 @@ class DiaryJobService : JobService()
                             R.mipmap.ic_launcher_foreground,
                             MainActivity::class.java
                         )
-                }
-            }
+//                }
+//            }
 
             jobFinished(params, false)
         })

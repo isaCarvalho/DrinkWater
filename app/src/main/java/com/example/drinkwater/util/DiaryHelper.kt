@@ -22,7 +22,7 @@ class DiaryHelper
         fun getTotalWater(context: Context) = diary.getTotalWater(context)
 
         @RequiresApi(Build.VERSION_CODES.O)
-        fun getTotalWaterML(context: Context) = diary.getTotalWaterML()
+        fun getTotalWaterML(context: Context) = diary.getTotalWaterML(context)
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun calculatePercent(context : Context) : Float {
@@ -53,7 +53,7 @@ class DiaryHelper
         @RequiresApi(Build.VERSION_CODES.O)
         fun isGoalAccomplished(context: Context) : Boolean
         {
-            val percent = DiaryHelper.getPercent(context)
+            val percent = getPercent(context)
             if (percent >= 100F)
                 return true
 

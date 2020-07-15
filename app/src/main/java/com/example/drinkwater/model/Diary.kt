@@ -5,6 +5,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.drinkwater.dao.DiaryDao
+import com.example.drinkwater.util.DiaryHelper
 import com.example.drinkwater.util.INFO_TAG
 import java.time.LocalDate
 
@@ -57,6 +58,15 @@ data class Diary(
 
     fun getTotalWaterML() = totalWaterML
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getTotalWaterML(context: Context) : Float
+    {
+        updateThis(context)
+
+        val diary = DiaryDao(context).getByDate(LocalDate.now().toString())
+        return diary?.totalWater?.times(1000) ?: 0F
+    }
+
     fun getQtWater() = qtWater
 
     fun getPercent() = percent
@@ -65,6 +75,8 @@ data class Diary(
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun calculatePercent(context: Context) : Float {
+
+        updateThis(context)
         this.percent = if (totalWaterML != 0F)
             qtWater * 100 / totalWaterML
         else
@@ -78,6 +90,8 @@ data class Diary(
     @RequiresApi(Build.VERSION_CODES.O)
     fun clearValues(context: Context)
     {
+        updateThis(context)
+
         qtWater = 0F
         totalWater = 0F
         totalWaterML = 0F
@@ -88,6 +102,9 @@ data class Diary(
     @RequiresApi(Build.VERSION_CODES.O)
     fun incrementWater(context: Context)
     {
+        updateThis(context)
+
+        this.qtWater = DiaryDao(context).getByDate(LocalDate.now().toString())?.qtWater ?: 0F
         if (qtWater <= totalWaterML)
             qtWater += 100
 
@@ -104,8 +121,23 @@ data class Diary(
     @RequiresApi(Build.VERSION_CODES.O)
     fun getAll(context: Context) = DiaryDao(context).getAll()
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun deleteAll(context: Context)
     {
         DiaryDao(context).deleteAll()
+        updateThis(context)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun updateThis(context: Context)
+    {
+        val diary = DiaryDao(context).getByDate(LocalDate.now().toString())
+        if (diary != null)
+        {
+            this.qtWater = diary.qtWater
+            this.percent = diary.percent
+            this.totalWater = diary.totalWater
+            this.totalWaterML = diary.totalWaterML
+        }
     }
 }

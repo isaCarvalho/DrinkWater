@@ -37,9 +37,9 @@ class NotificationViewModel(app : Application) : AndroidViewModel(app)
     fun calculatePeriod(defaultValue : Boolean = true) : Float
     {
         return if (defaultValue)
-            JobHelper.calculatePeriod(context, DiaryHelper.getTotalWaterML(context))
-        else
             JobHelper.calculatePeriod(context, 2000F)
+        else
+            JobHelper.calculatePeriod(context, DiaryHelper.getTotalWaterML(context))
     }
 
     fun changeNotificationStatus()
