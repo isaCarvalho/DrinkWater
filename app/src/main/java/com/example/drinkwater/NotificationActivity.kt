@@ -46,23 +46,32 @@ class NotificationActivity : AppCompatActivity()
         val interval = viewModel.calculatePeriod(false) * 60
         intervalTxt.text = "Notification Interval: $interval min"
 
+        val initialHourString = findViewById<EditText>(R.id.initialHourEdit)
+        val finalHourString = findViewById<EditText>(R.id.finalHourEdit)
+
+        val initialValue = viewModel.getInitialHour()
+        val finalValue = viewModel.getFinalHour()
+
+        initialHourString.setText(initialValue.toString())
+        finalHourString.setText(finalValue.toString())
+
         // buttons
         notificationBtn.setOnClickListener {
             viewModel.updateHours()
 
+            val scheduler = getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
+
             if (viewModel.isNotificationOn.value == "y")
-                cancelJob()
+                cancelJob(scheduler)
             else
-                scheduleJob()
+                scheduleJob(scheduler)
 
             viewModel.changeNotificationStatus()
         }
 
         intervalBtn.setOnClickListener {
-            val initialHourString = findViewById<EditText>(R.id.initialHourEdit).text.toString()
-            val finalHourString = findViewById<EditText>(R.id.finalHourEdit).text.toString()
 
-            if (initialHourString.isEmpty() || finalHourString.isEmpty()) {
+            if (initialHourString.text.toString().isEmpty() || finalHourString.text.toString().isEmpty()) {
                 Snackbar.make(intervalBtn, "Please, enter valid values!", Snackbar.LENGTH_SHORT)
                     .setAction("Action", null)
                     .show()
@@ -77,7 +86,7 @@ class NotificationActivity : AppCompatActivity()
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    private fun scheduleJob()
+    private fun scheduleJob(scheduler: JobScheduler)
     {
         var period = 0F
 
@@ -87,39 +96,34 @@ class NotificationActivity : AppCompatActivity()
             finish()
         }
 
-        Log.i(INFO_TAG, "period $period h")
-        Log.i(INFO_TAG, "period ${convertToMilliseconds(period).toLong()} ms")
+        val componentName = ComponentName(applicationContext, DiaryJobService::class.java)
 
-        val componentName = ComponentName(this, DiaryJobService::class.java)
+        Log.i(INFO_TAG, "period: ${convertToMilliseconds(period).toLong()} ms")
 
-        val info = JobInfo.Builder(JOB_ID, componentName)
+        val builder = JobInfo.Builder(JOB_ID, componentName)
             .setRequiresCharging(false)
             .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
-            .setPersisted(true)
             .setPeriodic(convertToMilliseconds(period).toLong())
-            .build()
+            .setPersisted(true)
 
-        val scheduler = getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
-        val resultCode = scheduler.schedule(info)
+        val resultCode = scheduler.schedule(builder.build())
 
         if (resultCode == JobScheduler.RESULT_SUCCESS) {
-            Toast.makeText(this, "Notification scheduled", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Notification activated!", Toast.LENGTH_SHORT).show()
             finish()
         }
         else
-            Toast.makeText(this, "Notification failed to schedule", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Notification failed to activate", Toast.LENGTH_SHORT).show()
     }
 
     // change hours to milliseconds
     private fun convertToMilliseconds(number : Float) = number * 60 * 60
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    private fun cancelJob()
+    private fun cancelJob(scheduler : JobScheduler)
     {
-        val scheduler = getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
-        scheduler.cancel(JOB_ID)
-
-        Log.i(JOB_TAG, "Canceled")
+        scheduler.cancelAll()
+        Toast.makeText(this, "Notification canceled!", Toast.LENGTH_SHORT).show()
     }
 
     companion object {

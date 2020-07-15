@@ -45,10 +45,10 @@ class NotificationService private constructor(private val context: Context)
             builder = Notification.Builder(context)
 
         builder.setContentTitle(contentTitle)
+            .setContentIntent(pendingIntent)
             .setContentText(contentText)
             .setLargeIcon(largeIcon)
             .setSmallIcon(smallIcon)
-            .setContentIntent(pendingIntent)
 
         notificationManager.notify(0, builder.build())
     }

@@ -11,8 +11,8 @@ import com.example.drinkwater.util.JobHelper
 class NotificationViewModel(app : Application) : AndroidViewModel(app)
 {
     var isNotificationOn = MutableLiveData<String>() // notification status
-    var initialHour = MutableLiveData<Int>()
-    var finalHour = MutableLiveData<Int>()
+    private var initialHour = MutableLiveData<Int>()
+    private var finalHour = MutableLiveData<Int>()
 
     private val context = app
     private val jobHelper = JobHelper
@@ -28,9 +28,13 @@ class NotificationViewModel(app : Application) : AndroidViewModel(app)
         finalHour.value = JobHelper.finalHour
     }
 
+    fun getInitialHour() = initialHour.value ?: 8
+
+    fun getFinalHour() = finalHour.value ?: 24
+
     fun updateInterval()
     {
-        JobHelper.updateInterval(context, initialHour.value!!, finalHour.value!!)
+        JobHelper.updateInterval(context, getInitialHour(), getFinalHour())
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

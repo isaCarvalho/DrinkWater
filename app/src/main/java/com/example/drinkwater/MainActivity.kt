@@ -5,7 +5,6 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
-import android.util.Log
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
@@ -16,7 +15,6 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.example.drinkwater.util.INFO_TAG
 import com.example.drinkwater.viewModel.MainViewModel
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -54,13 +52,12 @@ class MainActivity : AppCompatActivity(),
             if (it >= 100F)
             {
                 congratulationsTxt.text = "Congratulations!"
-                tts.speak("Congratulations!", TextToSpeech.QUEUE_FLUSH, null)
+                tts.speak("Congratulations!", TextToSpeech.QUEUE_FLUSH, null, null)
             }
             else
                 congratulationsTxt.text = null
         })
 
-        Log.d(INFO_TAG, "total water ${viewModel.getTotalWater()}")
         // settings activity
         if (viewModel.getTotalWater() == 0F) {
             SettingsActivity.start(this)
