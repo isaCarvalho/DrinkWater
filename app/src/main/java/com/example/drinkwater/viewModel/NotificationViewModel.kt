@@ -56,4 +56,7 @@ class NotificationViewModel(app : Application) : AndroidViewModel(app)
     {
         isNotificationOn.value = jobHelper.getNotificationStatus(context)
     }
+
+    // change hours to milliseconds
+    fun convertToMilliseconds(number : Float) = number * 60 * 60
 }

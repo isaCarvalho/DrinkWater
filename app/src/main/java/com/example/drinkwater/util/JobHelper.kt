@@ -2,7 +2,6 @@ package com.example.drinkwater.util
 
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.drinkwater.model.Notification
 import java.time.LocalTime
