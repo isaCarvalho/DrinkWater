@@ -30,28 +30,34 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
-            app:srcCompat="@mipmap/water"
-            android:contentDescription="@string/image_logo"/>
+            android:contentDescription="@string/image_logo"
+            app:srcCompat="@drawable/ic_energizer"
+            tools:ignore="VectorDrawableCompat" />
 
         <EditText
             android:id="@+id/waterAmountEdit"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
+            android:layout_marginTop="@dimen/header_padding"
+            android:layout_marginBottom="@dimen/header_padding"
+            android:textAlignment="center"
             android:autofillHints="@string/water_amount"
             android:ems="10"
             android:hint="@string/water_amount"
             android:inputType="numberDecimal"
+            android:minHeight="48dp"
             android:textColor="@color/colorText"
             android:textColorHint="@color/colorText"
-            android:layout_marginTop="@dimen/header_padding"/>
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"/>
 
         <Button
             android:id="@+id/saveBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorButton"
-            android:text="@string/save"/>
+            android:background="@color/colorPrimary"
+            android:text="@string/save"
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 

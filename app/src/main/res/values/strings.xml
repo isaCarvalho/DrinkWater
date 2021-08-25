@@ -41,4 +41,5 @@
         Remember to just put the number of the hour, like 8 for 8 AM and 24 for midnight.
         Enjoy!
     </string>
+    <string name="check_your_history_of_water_drank_per_day">Check your history of water \ndrank per day!</string>
 </resources>

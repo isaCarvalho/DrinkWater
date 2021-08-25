@@ -26,40 +26,48 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorBackground"
-        tools:context=".SettingsActivity"
-        android:layout_gravity="center">
-
-        <TextView
-            android:id="@+id/congratulationsTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/amita"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textStyle="bold"
-            android:textColor="@color/colorCongratulations"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
+        android:layout_gravity="center"
+        tools:context=".SettingsActivity">
 
         <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/congratulationsTxt">
+            app:layout_constraintVertical_bias="0.0">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imgEnergy"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/water_drank"
+                    app:srcCompat="@drawable/ic_energizer"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <TextView
+                    android:id="@+id/congratulationsTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/amita"
+                    android:textColor="@color/colorCongratulations"
+                    android:gravity="center_horizontal"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/percentText"
@@ -71,17 +79,39 @@
                     android:textColor="@color/colorText"
                     android:textSize="82sp" />
 
-                <Button
-                    android:id="@+id/drinkWaterBtn"
-                    android:layout_width="200dp"
+                <TextView
+                    android:id="@+id/qtToDrink"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@color/colorButton"
-                    android:text="@string/drink_water" />
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/antic"
+                    android:gravity="center_horizontal"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="38dp" />
+
 
             </LinearLayout>
 
         </ScrollView>
+
+        <Button
+            android:id="@+id/drinkWaterBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/colorAccent"
+            android:text="@string/drink_water"
+            android:textColor="#ffffff"
+            app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

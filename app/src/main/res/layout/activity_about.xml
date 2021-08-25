@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
-            android:drawableTop="@mipmap/ic_launcher_foreground"
+            android:drawableTop="@drawable/ic_energizer"
             android:fontFamily="@font/antic"
             android:gravity="center_horizontal"
             android:text="@string/about_text"

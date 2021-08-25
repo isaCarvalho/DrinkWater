@@ -57,6 +57,10 @@ class MainActivity : AppCompatActivity(),
                 congratulationsTxt.text = null
         })
 
+        viewModel.totalWater.observe(this, Observer { total ->
+            "Quantidade total: $total L".also { qtToDrink.text = it }
+        })
+
         // settings activity
         if (viewModel.getTotalWater() == 0F) {
             SettingsActivity.start(this)
