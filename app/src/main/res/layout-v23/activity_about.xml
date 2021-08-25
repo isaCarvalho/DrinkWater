@@ -11,20 +11,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_gravity="center">
+        android:layout_gravity="center|start"
+        android:layout_margin="16dp">
 
         <TextView
-            android:layout_marginTop="80dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:drawableTop="@mipmap/ic_launcher_foreground"
+            android:fontFamily="@font/antic"
             android:text="@string/about_text"
-            android:fontFamily="@font/amita"
             android:textAlignment="center"
             android:textColor="@color/colorText"
-            android:drawableTop="@mipmap/ic_launcher_foreground"
-            android:textSize="18sp"
-            />
+            android:textSize="20sp" />
 
     </LinearLayout>
 

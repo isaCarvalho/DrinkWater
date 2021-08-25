@@ -15,16 +15,16 @@
         android:layout_gravity="center">
 
         <TextView
-            android:layout_marginTop="80dp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/about_text"
-            android:fontFamily="@font/amita"
-            android:textAlignment="center"
+            android:layout_marginTop="0dp"
             android:drawableTop="@mipmap/ic_launcher_foreground"
-            android:textSize="18sp"
+            android:fontFamily="@font/antic"
+            android:gravity="center_horizontal"
+            android:text="@string/about_text"
+            android:textAlignment="center"
             android:textColor="@color/colorText"
-            android:gravity="center_horizontal" />
+            android:textSize="20sp" />
 
     </LinearLayout>
 

@@ -34,13 +34,14 @@
             android:id="@+id/initialHourEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="number"
-            android:hint="@string/_8"
-            android:autofillHints="@string/_8"
             android:layout_margin="4dp"
+            android:autofillHints="@string/_8"
+            android:ems="10"
+            android:hint="@string/_8"
+            android:inputType="number"
+            android:minHeight="48dp"
             android:textColor="@android:color/black"
-            android:textColorHint="@android:color/secondary_text_dark"/>
+            android:textColorHint="@android:color/secondary_text_dark" />
     </TableRow>
 
     <TableRow
@@ -61,13 +62,14 @@
             android:id="@+id/finalHourEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="number"
-            android:hint="@string/_24"
-            android:autofillHints="@string/_24"
             android:layout_margin="4dp"
+            android:autofillHints="@string/_24"
+            android:ems="10"
+            android:hint="@string/_24"
+            android:inputType="number"
+            android:minHeight="48dp"
             android:textColor="@android:color/black"
-            android:textColorHint="@android:color/secondary_text_dark"/>
+            android:textColorHint="@android:color/secondary_text_dark" />
     </TableRow>
 
     <TableRow
@@ -129,15 +131,15 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:adjustViewBounds="false"
-        android:background="#606060"
+        android:background="#636363"
         android:contentDescription="@string/app_name"
-        app:srcCompat="@android:drawable/divider_horizontal_textfield" />
+        app:srcCompat="@android:drawable/divider_horizontal_dark" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/notificationText"
-            android:fontFamily="@font/amita"
+            android:fontFamily="@font/antic"
             android:textColor="@color/colorText"
             android:layout_gravity="center_horizontal"
             android:layout_margin="16dp"
